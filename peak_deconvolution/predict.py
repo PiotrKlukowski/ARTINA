@@ -23,8 +23,6 @@
 import keras
 import pickle
 import matplotlib.pyplot as plt
-import tensorflow as tf
-import keras.backend as K
 import numpy as np
 from scipy.spatial.distance import wminkowski, pdist, squareform
 import os

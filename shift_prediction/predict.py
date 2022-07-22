@@ -49,12 +49,12 @@
 """
 
 import pickle
-import matplotlib.pyplot as plt
 import torch
-from torch_geometric.nn import BatchNorm, GENConv, DeepGCNLayer
+from torch_geometric.nn import  GENConv, DeepGCNLayer
 import torch.nn.functional as F
 from torch.nn import Linear, LayerNorm, ReLU
 import os
+import shutil
 
 
 # Model used to make prediction (DeeperGCN: All You Need to Train Deeper GCNs, https://arxiv.org/abs/2006.07739)
@@ -109,6 +109,7 @@ if not os.path.exists("example_input"):
 # Load model
 model = GNNModel()
 model.load_state_dict(torch.load("model.torch", map_location="cpu"))
+
 
 # Load example input
 with open("example_input/2B3W_graph.pickle", "rb") as f:

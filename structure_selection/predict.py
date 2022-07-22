@@ -1,6 +1,10 @@
 """
 
-    Ranking protein structure proposals with ARTINA (https://arxiv.org/ftp/arxiv/papers/2201/2201.12041.pdf).
+    The script:
+    a) Downloads model data from nmrtist.org
+    b) Loads feature vector associated with 10 structure candidates
+    c) Builds ranking
+    d) Presents the predicted ranking
 
     Binary files in "example_input" directory contain serialized features vectors of protein structure models (10 structure proposals x 100 proteins), calculated in the last ARTINA automated structure determination cycle.
     This script reproduces Backbone RMSD to reference that has been reported in Table S2.
@@ -8,7 +12,7 @@
     Feature ID | Quantity
     =====================
     0*         | Always zero for pairwise comparison of the same protein
-    1          | Ramachandran plot statistics: residues in most favored regions
+    1          | Ramachandran plot statistics: residues in most favoured regions
     2          | Ramachandran plot statistics: residues in additionally allowed regions
     3          | Ramachandran plot statistics: residues in generously allowed regions
     4          | Ramachandran plot statistics: residues in disallowed regions
