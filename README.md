@@ -48,11 +48,11 @@ To use individual models and scripts available in this repository, configuration
 
  
 ###  License
-The code available in this repository is available under the **Apache 2.0 License**.
+The code in this repository is available under the **Apache 2.0 License**.
 
 
 ### Reference
-* Klukowski, P., Riek, R., Güntert, P. (2022), Rapid protein assignments and structures from raw NMR spectra with the deep learning technique ARTINA, arxiv.org/abs/2201.12041
+* Klukowski, P., Riek, R., Güntert, P. (2022) Rapid protein assignments and structures from raw NMR spectra with the deep learning technique ARTINA, arxiv.org/abs/2201.12041
   
 
 

@@ -27,9 +27,10 @@ import numpy as np
 from scipy.spatial.distance import wminkowski, pdist, squareform
 import os
 import shutil
+from keras.utils import plot_model
 
 # Download data
-if not os.path.exists("example_input"):
+if not os.path.exists("example_input") or not os.path.exists("model") or not os.path.exists("ARTINA_peak_deconvolution.zip"):
     os.system("wget nmrtist.org/static/public/publications/artina/models/ARTINA_peak_deconvolution.zip")
     shutil.unpack_archive("ARTINA_peak_deconvolution.zip")
 
@@ -37,12 +38,10 @@ if not os.path.exists("example_input"):
 show_only_examples_with_multiple_components = False
 
 # Load the model
-model = keras.models.load_model('model.h5', compile=False)
-
-from keras.utils import plot_model
+model = keras.models.load_model('model/model.h5', compile=False)
 plot_model(model, to_file='model_architecture.png', show_layer_names=False, show_shapes=True)
 
-
+# Make predictions
 for batch_id in range(1, 6):
 
     # Load example input batch (scale-space pyramid) and make predictions
@@ -56,7 +55,7 @@ for batch_id in range(1, 6):
     # Postprocess results
     tolerance = 1.0
 
-    for i in range(0, 16):
+    for i in range(0, 64):
 
         # Select best prediction or switch to single component if prediction is unstable
         coordinates = np.asarray([e[i] for e in annotations])

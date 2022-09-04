@@ -5,7 +5,7 @@
     a) Downloads model data from nmrtist.org
     b) Loads graph that represents protein assignment obtained from FLYA run
     c) Loads GNN model and performs node regression to identify expected value of chemical shifts not assigned by FLYA
-    d) Presents predicted shifts in table form
+    d) Presents predicted shifts in the table form
 
 
     Node feature ID | Quantity
@@ -38,8 +38,8 @@
 
     145             | Chemical shift assigned by FLYA (0 if shift hasn't been assigned)
 
-    Model trained using BMRB records not included in the ARTINA benchmark dataset.
-    Fragments for shift matching have been extracted from BMRB records not included in the ARTINA benchmark dataset.
+    Model trained using BMRB records that are not included in the ARTINA benchmark dataset.
+    Fragments for shift matching have been extracted from BMRB records that are not included in the ARTINA benchmark dataset.
 
     Technical remarks:
     a) Model has been trained with PyTorch 1.6.0 and PyTorch Geometric 1.6.1
@@ -102,13 +102,13 @@ class GNNModel(torch.nn.Module):
 
 
 # Download data
-if not os.path.exists("example_input"):
+if not os.path.exists("example_input") or not os.path.exists("model") or not os.path.exists("ARTINA_shift_prediction.zip"):
     os.system("wget nmrtist.org/static/public/publications/artina/models/ARTINA_shift_prediction.zip")
     shutil.unpack_archive("ARTINA_shift_prediction.zip")
 
 # Load model
 model = GNNModel()
-model.load_state_dict(torch.load("model.torch", map_location="cpu"))
+model.load_state_dict(torch.load("model/model.torch", map_location="cpu"))
 
 
 # Load example input

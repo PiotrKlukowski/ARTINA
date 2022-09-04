@@ -33,12 +33,12 @@ import shutil
 import os
 
 # Download data
-if not os.path.exists("example_input"):
+if not os.path.exists("example_input") or not os.path.exists("model") or not os.path.exists("ARTINA_peak_picking.zip"):
     os.system("wget nmrtist.org/static/public/publications/artina/models/ARTINA_peak_picking.zip")
     shutil.unpack_archive("ARTINA_peak_picking.zip")
 
 # Load the model
-model = keras.models.load_model('fold_1.h5')
+model = keras.models.load_model('model/fold_1.h5')
 
 for batch_id in range(1000):
 

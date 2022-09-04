@@ -61,13 +61,13 @@ import os
 import shutil
 
 # Download data
-if not os.path.exists("example_input"):
+if not os.path.exists("example_input") or not os.path.exists("model") or not os.path.exists("ARTINA_structure_ranking.zip"):
     os.system("wget nmrtist.org/static/public/publications/artina/models/ARTINA_structure_ranking.zip")
     shutil.unpack_archive("ARTINA_structure_ranking.zip")
 
 # Load the model
 model = CatBoostClassifier(n_estimators=30, learning_rate=0.3, depth=10)
-model.load_model("model_fold4.cbm")
+model.load_model("model/model_fold4.cbm")
 
 # Load feature vectors associated with evaluated protein
 # Note: last element of the vector stored in the file is structure RMSD to PDB reference
